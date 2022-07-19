@@ -8,7 +8,7 @@ import {
 	useRefinementList,
 	UseRefinementListProps,
 } from "react-instantsearch-hooks-web";
-
+import Router from "next/router";
 const searchClient = algoliasearch(
 	process.env.ALGOLIA_APP_ID ?? "",
 	process.env.ALGOLIA_API_KEY ?? ""
@@ -60,7 +60,7 @@ const Hits: React.FC = () => {
 	return (
 		<div>
 			{hits.map((h: any) => (
-				<div>
+				<div onClick={() => Router.push(`/person/${h.post_id}`)}>
 					<h2>{h.author_name}</h2>
 					<img src={h.author_image_url} />
 				</div>
